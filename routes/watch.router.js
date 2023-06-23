@@ -5,8 +5,8 @@ const path = require('path');
 
 const router = express.Router();
 
-router.get('/:video', (req, res) => {
-    const videoPath = path.join(__dirname, '..', 'vids', req.params.video);
+router.get('/*', (req, res) => {
+    const videoPath = path.join(__dirname, '..', 'vids', req._parsedUrl.path);
     const videoStat = fs.statSync(videoPath);
     const fileSize = videoStat.size;
     const videoRange = req.headers.range;

@@ -7,11 +7,12 @@ const handlebars = require('express-handlebars');
 const router = express.Router();
 
 // routes here
-router.get('/:media', (req, res) => {
-    const mediaPath = path.join(__dirname, '..', 'vids', req.params.media);
+router.get('/*', (req, res) => {
+    resource = req._parsedUrl.path
+    const mediaPath = path.join(__dirname, '..', 'vids', resource);
     const mediaStat = fs.statSync(mediaPath);
     if (mediaStat.isFile()) {
-        res.render('video', {url: mediaPath});
+        res.render('video', {url: `/watchraw${resource}`});
     } else if (mediaStat.isDirectory) {
         res.render('playlist', {path: mediaPath});
     }
