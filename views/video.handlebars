@@ -2,26 +2,34 @@
 <html lang="en">
 
 <head>
+  <title>Stream It | Video Player</title>
   <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="loader">
-    <!-- Preloader -->
-    <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="#000">
-      <circle cx="60" cy="60" r="54" stroke="#000" stroke-width="12" fill="none" />
-      <circle cx="60" cy="60" r="54" stroke="#fff" stroke-width="12" stroke-dasharray="339.292"
-        stroke-dashoffset="339.292" fill="none">
-        <animate attributeName="stroke-dashoffset" values="339.292;0" dur="1.5s" repeatCount="indefinite" begin="0s" />
-      </circle>
-  </div>
-
-  <video-js class="video-js" controls>
-    <source src="{{url}}" type="video/mp4" />
-  </video-js>
-
+  <main>
+    <section class="header-section">
+      {{> header}}
+    </section>
+    <section class="video-section">
+      <div class="video-container">
+        <video-js class="video-js" controls style="border-radius: 10px;">
+          <source src="{{url}}" type="video/mp4" />
+        </video-js>
+        <div class="video-info rounded">
+          <h2 class="video-title">Big Buck Bunny</h2>
+          <p>
+            Big Buck Bunny is a short computer-animated comedy film, produced
+            by the Blender Foundation and released as open-source film. The
+            film was released as free content, licensed under the Creative
+            Commons Attribution 3.0 license. It was rendered using
+            <a href="https://www.blender.org/">Blender</a>, an open source 3D
+            graphics application.
+          </p>
+      </div>
+    </section>
+  </main>
   <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
   <script src="../static/main.js"></script>
 </body>
-
 </html>
