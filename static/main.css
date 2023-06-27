@@ -53,8 +53,45 @@ main {
     text-transform: capitalize;
 }
 
-.header__title__text a {
-    
+#logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f1f1f1f1;;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    padding: 0 1em 0 1em;
+    font-size: 1em;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.102);
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    height: 100%;
+    justify-content: end;
+    flex: 1;
+    padding: 2px;
+    align-items: center;
+}
+
+.nav li {
+    color: #f1f1f1f1;;
+    text-decoration: none;
+    font-weight: 700;
+    height: 100%;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px 0 25px;
+}
+
+.nav li a {
+    color: #f1f1f1f1;
 }
 
 /* Breakpoints */
