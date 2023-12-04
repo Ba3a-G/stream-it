@@ -6,7 +6,8 @@ const path = require('path');
 const router = express.Router();
 
 router.get('/*', (req, res) => {
-    const videoPath = path.join(__dirname, '..', 'vids', req._parsedUrl.path);
+    const decodedPath = decodeURI(req._parsedUrl.path);
+    const videoPath = path.join(__dirname, '..', 'vids', decodedPath);
     const videoStat = fs.statSync(videoPath);
     const fileSize = videoStat.size;
     const videoRange = req.headers.range;

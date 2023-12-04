@@ -13,15 +13,30 @@ router.get('/*', (req, res) => {
     const mediaStat = fs.statSync(mediaPath);
 
     if (mediaStat.isFile()) {
-        let videoTitle = null;
+        const fileName = path.basename(mediaPath);
+        let videoTitle = fileName.split('.')[0];
         let videoDescription = null;
         const data = {
             url: `/watchraw${resource}`,
-            title: videoTitle | 'Video title could not be found',
-            description: videoDescription | 'Video description could not be found'
+            title: videoTitle || 'Video title could not be found',
+            description: videoDescription || 'Video description could not be found'
         };
         res.render('video', data);
     } else if (mediaStat.isDirectory) {
+        const files = fs.readdirSync(mediaPath);
+        const videos = [];
+        files.forEach((file) => {
+            const filePath = path.join(mediaPath, file);
+            const fileStat = fs.statSync(filePath);
+            if (fileStat.isFile()) {
+                videos.push({
+                    url: `/watchraw${resource}/${file}`,
+                    title: file.split('.')[0],
+                    description: ''
+                });
+            }
+        });
+        console.log(videos);
         res.render('playlist', {path: mediaPath});
     };
 });
