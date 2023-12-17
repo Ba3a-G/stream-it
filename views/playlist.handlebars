@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  </head>
-  <body>
-    Good things take time.
-  </body>
+
+<head>
+  <title>Stream It | Video Player</title>
+  <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
+  <script> var videos = {{{videos}}}; </script>
+</head>
+
+<body>
+  <main>
+    <section class="header-section">
+      {{> header}}
+    </section>
+    <section class="video-section">
+      <div class="video-container">
+        <video-js class="video-js" controls style="border-radius: 10px;">
+        </video-js>
+        <div class="video-info rounded">
+          <h2 class="video-title">{{title}}</h2>
+          <p>
+            {{description}}
+          </p>
+        </div>
+    </section>
+  </main>
+  <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
+  <script src="/static/videojs-playlist.js"></script>
+  <script src="/static/playlist.js"></script>
+</body>
+
 </html>
